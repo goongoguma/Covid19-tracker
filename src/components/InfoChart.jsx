@@ -15,8 +15,9 @@ function InfoChart({ data }) {
   let formatData;
 
   if (data) {
-    delete data['lastUpdate'];
-    formatData = Object.keys(data).map((key, index) => { return {name: key, value: data[key].value, color: colors[index]} });
+   const { confirmed, recovered, deaths } = data;
+    const formattedData = { confirmed, recovered, deaths };
+    formatData = Object.keys(formattedData).map((key, index) => { return {name: key, value: data[key].value, color: colors[index]} });
   }
  
   return ( 
