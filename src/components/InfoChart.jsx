@@ -14,8 +14,12 @@ function InfoChart({ data }) {
   const colors = ['#CE8296','#008080', '#7D7D7D'];
   let formatData;
 
+  if (data?.error) {
+    return <p>Invalid data</p>
+  }
+
   if (data) {
-   const { confirmed, recovered, deaths } = data;
+    const { confirmed, recovered, deaths } = data;
     const formattedData = { confirmed, recovered, deaths };
     formatData = Object.keys(formattedData).map((key, index) => { return {name: key, value: data[key].value, color: colors[index]} });
   }
